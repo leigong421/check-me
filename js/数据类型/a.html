@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据类型</title>
+</head>
+
+<body>
+    <dl>
+        <dt>
+            基本数据类型
+        </dt>
+        <dd>string</dd>
+        <dd>number(Number 基本类型可以精确表示的最大整数是 2^53)</dd>
+        <dd>boolean</dd>
+        <dd>null</dd>
+        <dd>undefined</dd>
+        <dd>symbol</dd>
+        <dd>BigInt(ES10增加的 ,解决number限制最大值的问题)</dd>
+        <dt>
+            引用数据类型
+        </dt>
+    </dl>
+    <p>
+        基本数据类型:堆中存数据
+        <br>
+        引用数据类型:堆中存地址,栈中存数据
+    </p>
+    <ul>
+        <h3>获取数据类型的方法</h3>
+        <li>
+            通过typeof
+            <span style="color:red;">(注意:typeof(null)是object,这是语法上的错误)</span>
+        </li>
+        <li>
+            通过 instanceof
+            <span style="color:red;">用于引用数据类型的获取,基本数据类型无法获取</span>
+        </li>
+        <li>
+            通过 Object.prototype.toString.call()
+        </li>
+        <li>
+            通过 constructor
+        </li>
+    </ul>
+</body>
+
+<script>
+    //获取数据类型的方法:
+    console.log(typeof ('1'), typeof (1), typeof (true), typeof (null));//string number boolean object
+
+    console.log((1 instanceof Number), ({}
+        instanceof Object), ([] instanceof Array)); //a.html:54 
+
+
+
+    console.log(Object.prototype.toString.call(() => {})); //[object Function]
+
+    console.log({}.constructor === Object, (() => {}).constructor === Function); //true true
+</script>
+
+</html>
