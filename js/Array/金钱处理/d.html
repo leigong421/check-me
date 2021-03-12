@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>金钱处理</title>
+</head>
+
+<body>
+    <script>
+        //金钱处理方法-通过reduce处理
+        function dealMoney1(str) {
+            let c = str.split('').reverse().reduce((pre, next, index) => {
+                return ((index % 3) ? next : `${next},`) + pre
+            })
+            return c
+        }
+
+
+        //金钱处理方法-通过toLocaleString处理
+        function dealMoney2(str) {
+            return (~~str).toLocaleString('en-us')
+        }
+
+
+        //金钱处理方法-通过正则处理处理
+        function dealMoney3(str) {
+            return str.replace(/(?!^)(?=(\d{3})+$)/g, ',')
+        }
+
+        //金钱处理方法-处理带有两位小数的数字的金钱展示格式
+        function dealMoney4(str) {
+            let copyStr = str && (parseFloat(str).toFixed(2)) || '0.00'
+            return copyStr.replace(/(?!^)(?=((\d{3})+)\.\d{2}$)/g, ',')
+
+        }
+
+        console.log(dealMoney1('1234567890'), '方法二', dealMoney2('1234567890'), '方法三', dealMoney3('1234567890'),'方法四',dealMoney4('1234567890.888888'))
+    </script>
+</body>
+
+</html>

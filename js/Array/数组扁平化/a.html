@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组扁平化</title>
+</head>
+
+<body>
+    <script>
+        let a = [
+            [1, 2, [5, 6, 8, [7, 8, 9]]], 3, 4, [5, [6, 7]]
+        ]
+
+        // 方法一 利用reduce传入[]初始值
+        function flap(params) {
+            return params.reduce((pre, next) => {
+                return pre.concat(Array.isArray(next) ? flap(next) : next)
+            }, [])
+        }
+        flap(a)
+        console.log('方法一', flap(a))
+
+
+        // 方法二 利用数组的扁平化处理方法,flat,可以传入参数,不传的时候默认参数是1扁平化一次
+        console.log('方法一', a.flat(Infinity))
+    </script>
+</body>
+
+</html>
